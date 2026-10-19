@@ -1,0 +1,197 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 465,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "data": {
+    "url": "data/treemap.json"
+  },
+  "params": [
+    {
+      "name": "chosenSector",
+      "value": "All sectors",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All sectors",
+          "Financials",
+          "Materials",
+          "Health Care",
+          "Industrials",
+          "Consumer Discretionary",
+          "Real Estate",
+          "Energy",
+          "Consumer Staples",
+          "Communication",
+          "Information Technology",
+          "Utilities"
+        ],
+        "name": "Highlight sector: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#fbfaf6",
+        "strokeWidth": 1.3
+      },
+      "encoding": {
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Financials",
+              "Materials",
+              "Health Care",
+              "Industrials",
+              "Consumer Discretionary",
+              "Real Estate",
+              "Energy",
+              "Consumer Staples",
+              "Communication",
+              "Information Technology",
+              "Utilities"
+            ],
+            "range": [
+              "#254f67",
+              "#bf693b",
+              "#8f7396",
+              "#4c8078",
+              "#be9b45",
+              "#789aaa",
+              "#6e7d42",
+              "#b38286",
+              "#727a98",
+              "#5f94aa",
+              "#9a8d6e"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "test": "chosenSector === 'All sectors' || datum.sector === chosenSector",
+            "value": 1
+          },
+          "value": 0.16
+        },
+        "tooltip": [
+          {
+            "field": "code",
+            "type": "nominal"
+          },
+          {
+            "field": "name",
+            "type": "nominal"
+          },
+          {
+            "field": "sector",
+            "type": "nominal"
+          },
+          {
+            "field": "weight",
+            "type": "quantitative",
+            "title": "Equity weight (%)",
+            "format": ".3f"
+          }
+        ],
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x1",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              60
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y1",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "white"
+      },
+      "encoding": {
+        "x": {
+          "field": "cx",
+          "type": "quantitative",
+          "axis": null
+        },
+        "y": {
+          "field": "cy",
+          "type": "quantitative",
+          "axis": null
+        },
+        "text": {
+          "condition": {
+            "test": "length(datum.label) > 0 && abs(scale('x', datum.x1) - scale('x', datum.x0)) >= length(datum.label) * 8 + 10 && abs(scale('y', datum.y1) - scale('y', datum.y0)) >= 18",
+            "field": "label",
+            "type": "nominal"
+          },
+          "value": ""
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "width": "container",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "height": 400,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -135,
+      0,
+      0
+    ]
+  },
+  "description": "Where are BHP Copper SA’s three operating mines? Equal-size points locate mine sites; they encode neither output nor market value. One ASX-listed company, three sites.",
+  "usermeta": {
+    "idiom": "point-location map",
+    "population": "Three BHP Copper SA operated mines; not all BHP assets",
+    "coordinates": "Unchanged GA Australian Operating Mines Map 2025 site coordinates",
+    "operator_evidence": "BHP Copper SA disclosure, 8 July 2026",
+    "no_inference": "No transport routes, ownership percentages, production volumes or headquarters inferred"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/south-australia.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e9eae3",
+        "stroke": "#fffefa"
+      }
+    },
+    {
+      "data": {
+        "url": "data/bhp-copper-sa.json"
+      },
+      "transform": [
+        {
+          "calculate": "'8 July 2026'",
+          "as": "evidence_date"
+        },
+        {
+          "calculate": "'Three Copper SA mines; not all BHP assets'",
+          "as": "scope"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 135,
+        "color": "#bf693b",
+        "opacity": 1,
+        "stroke": "#fffefa",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal",
+            "title": "Operating mine"
+          },
+          {
+            "field": "company",
+            "type": "nominal",
+            "title": "ASX-listed company"
+          },
+          {
+            "field": "asx_code",
+            "type": "nominal",
+            "title": "ASX code"
+          },
+          {
+            "field": "relationship",
+            "type": "nominal",
+            "title": "Relationship to BHP"
+          },
+          {
+            "field": "status",
+            "type": "nominal",
+            "title": "GA status (2025 snapshot)"
+          },
+          {
+            "field": "commodity_group",
+            "type": "nominal",
+            "title": "GA commodity classification"
+          },
+          {
+            "field": "latitude",
+            "type": "quantitative",
+            "title": "GA latitude",
+            "format": ".4f"
+          },
+          {
+            "field": "longitude",
+            "type": "quantitative",
+            "title": "GA longitude",
+            "format": ".4f"
+          },
+          {
+            "field": "evidence_date",
+            "type": "nominal",
+            "title": "Operating relationship verified by BHP"
+          },
+          {
+            "field": "scope",
+            "type": "nominal",
+            "title": "Case-study scope"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/bhp-copper-sa.json"
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "color": "#213b48",
+        "fontWeight": 600,
+        "align": {
+          "expr": "datum.name === 'Prominent Hill' ? 'right' : 'left'"
+        },
+        "dx": {
+          "expr": "datum.name === 'Prominent Hill' ? -13 : 13"
+        },
+        "dy": {
+          "expr": "datum.name === 'Carrapateena' ? 13 : -12"
+        }
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "South Australia · operating sites"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 12,
+        "color": "#5b6c72"
+      },
+      "encoding": {
+        "x": {
+          "value": 8
+        },
+        "y": {
+          "value": 8
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

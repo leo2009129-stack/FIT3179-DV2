@@ -1,0 +1,61 @@
+{
+  "issuer": {
+    "code": "BHP",
+    "asx_name": "BHP GROUP LIMITED",
+    "asx_industry_group": "Materials",
+    "ioz_name": "BHP GROUP LTD",
+    "ioz_sector": "Materials",
+    "ioz_equity_weight_pct": 11.441872084914023,
+    "ioz_rank": 1,
+    "directory_as_at": "2026-10-18",
+    "holdings_as_at": "2026-10-16"
+  },
+  "site_count": 3,
+  "sites": [
+    {
+      "issuer_code": "BHP",
+      "ga_objectid": 1055,
+      "mine_name": "Olympic Dam",
+      "state": "SA",
+      "longitude": 136.88929299999998,
+      "latitude": -30.437444,
+      "relationship": "BHP Copper SA operated mine",
+      "ga_snapshot": "2025",
+      "ga_source": "https://pid.geoscience.gov.au/dataset/ga/150821",
+      "relationship_source": "https://www.bhp.com/es/news/media-centre/releases/2026/07/another-step-forward-in-bhps-south-australian-growth-plans-with-award-of-design-and-supply-contract",
+      "relationship_date": "2026-07-08"
+    },
+    {
+      "issuer_code": "BHP",
+      "ga_objectid": 855,
+      "mine_name": "Prominent Hill",
+      "state": "SA",
+      "longitude": 135.5749,
+      "latitude": -29.720039999999997,
+      "relationship": "BHP Copper SA operated mine",
+      "ga_snapshot": "2025",
+      "ga_source": "https://pid.geoscience.gov.au/dataset/ga/150821",
+      "relationship_source": "https://www.bhp.com/es/news/media-centre/releases/2026/07/another-step-forward-in-bhps-south-australian-growth-plans-with-award-of-design-and-supply-contract",
+      "relationship_date": "2026-07-08"
+    },
+    {
+      "issuer_code": "BHP",
+      "ga_objectid": 572,
+      "mine_name": "Carrapateena",
+      "state": "SA",
+      "longitude": 137.487,
+      "latitude": -31.2484,
+      "relationship": "BHP Copper SA operated mine",
+      "ga_snapshot": "2025",
+      "ga_source": "https://pid.geoscience.gov.au/dataset/ga/150821",
+      "relationship_source": "https://www.bhp.com/es/news/media-centre/releases/2026/07/another-step-forward-in-bhps-south-australian-growth-plans-with-award-of-design-and-supply-contract",
+      "relationship_date": "2026-07-08"
+    }
+  ],
+  "joins": [
+    "GA objectid + exact mine name + state to the evidence-linked Copper SA site list",
+    "BHP ASX code to the ASX directory and BlackRock ticker, exact match"
+  ],
+  "role": "Coordinates and issuer/operating relationship are combined in Map 11; portfolio rank supports its case selection",
+  "limits": "Three operated mines, one issuer. No all-asset coverage, mine valuations, ownership percentages, production or transport routes inferred."
+}

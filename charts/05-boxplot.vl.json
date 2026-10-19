@@ -1,0 +1,151 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 430,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "data": {
+    "url": "data/holdings.json"
+  },
+  "mark": {
+    "type": "boxplot",
+    "extent": 1.5,
+    "size": 18,
+    "median": {
+      "color": "#fff"
+    },
+    "outliers": {
+      "size": 24,
+      "opacity": 0.5
+    }
+  },
+  "encoding": {
+    "y": {
+      "field": "sector",
+      "type": "nominal",
+      "sort": [
+        "Financials",
+        "Materials",
+        "Health Care",
+        "Industrials",
+        "Consumer Discretionary",
+        "Real Estate",
+        "Energy",
+        "Consumer Staples",
+        "Communication",
+        "Information Technology",
+        "Utilities"
+      ],
+      "title": null,
+      "axis": {
+        "labelLimit": 200
+      }
+    },
+    "x": {
+      "field": "weight",
+      "type": "quantitative",
+      "scale": {
+        "type": "log"
+      },
+      "title": "Weight of an individual holding (%, log scale)",
+      "axis": {
+        "values": [
+          0.02,
+          0.05,
+          0.1,
+          0.5,
+          1,
+          5,
+          10
+        ],
+        "format": ".2~f"
+      }
+    },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Financials",
+          "Materials",
+          "Health Care",
+          "Industrials",
+          "Consumer Discretionary",
+          "Real Estate",
+          "Energy",
+          "Consumer Staples",
+          "Communication",
+          "Information Technology",
+          "Utilities"
+        ],
+        "range": [
+          "#254f67",
+          "#bf693b",
+          "#8f7396",
+          "#4c8078",
+          "#be9b45",
+          "#789aaa",
+          "#6e7d42",
+          "#b38286",
+          "#727a98",
+          "#5f94aa",
+          "#9a8d6e"
+        ]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "sector",
+        "type": "nominal",
+        "title": "Sector"
+      }
+    ]
+  },
+  "usermeta": {
+    "tooltip_presentation": "js/app.js formats the existing composite-mark statistics only; no new aggregates",
+    "tooltip_fields": {
+      "mid_box_weight": "Median holding weight",
+      "lower_box_weight": "Middle half starts",
+      "upper_box_weight": "Middle half ends",
+      "lower_whisker_weight": "Lower whisker weight",
+      "upper_whisker_weight": "Upper whisker weight",
+      "weight": "Holding weight"
+    },
+    "tooltip_number_format": ".2f",
+    "tooltip_unit": "%"
+  }
+}

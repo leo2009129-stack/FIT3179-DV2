@@ -1,0 +1,123 @@
+[
+  {
+    "sector": "Financials",
+    "count": 29,
+    "count_share": 14.5,
+    "weight_share": 33.20825183557261,
+    "gap_pp": 18.70825183557261,
+    "median_weight_pct": 0.20293167084102012,
+    "largest_asx_name": "COMMONWEALTH BANK OF AUSTRALIA.",
+    "largest_asx_code": "CBA",
+    "largest_three_share_pct": 56.606445792926976
+  },
+  {
+    "sector": "Materials",
+    "count": 52,
+    "count_share": 26.0,
+    "weight_share": 25.44167152528123,
+    "gap_pp": -0.5583284747187705,
+    "median_weight_pct": 0.14330858663502685,
+    "largest_asx_name": "BHP GROUP LIMITED",
+    "largest_asx_code": "BHP",
+    "largest_three_share_pct": 58.74183766076092
+  },
+  {
+    "sector": "Health Care",
+    "count": 13,
+    "count_share": 6.5,
+    "weight_share": 7.16553248403543,
+    "gap_pp": 0.6655324840354302,
+    "median_weight_pct": 0.3229668137865656,
+    "largest_asx_name": "CSL LIMITED",
+    "largest_asx_code": "CSL",
+    "largest_three_share_pct": 67.10045875681537
+  },
+  {
+    "sector": "Industrials",
+    "count": 26,
+    "count_share": 13.0,
+    "weight_share": 6.7904886406409,
+    "gap_pp": -6.2095113593591,
+    "median_weight_pct": 0.12405235289958741,
+    "largest_asx_name": "TRANSURBAN GROUP",
+    "largest_asx_code": "TCL",
+    "largest_three_share_pct": 51.007989288545154
+  },
+  {
+    "sector": "Consumer Discretionary",
+    "count": 16,
+    "count_share": 8.0,
+    "weight_share": 6.686319281008857,
+    "gap_pp": -1.3136807189911428,
+    "median_weight_pct": 0.08382021217951904,
+    "largest_asx_name": "WESFARMERS LIMITED",
+    "largest_asx_code": "WES",
+    "largest_three_share_pct": 78.23132025519473
+  },
+  {
+    "sector": "Real Estate",
+    "count": 20,
+    "count_share": 10.0,
+    "weight_share": 5.320906501443529,
+    "gap_pp": -4.679093498556471,
+    "median_weight_pct": 0.07911453856544659,
+    "largest_asx_name": "GOODMAN GROUP",
+    "largest_asx_code": "GMG",
+    "largest_three_share_pct": 57.944092676094364
+  },
+  {
+    "sector": "Energy",
+    "count": 12,
+    "count_share": 6.0,
+    "weight_share": 4.732593628318383,
+    "gap_pp": -1.2674063716816173,
+    "median_weight_pct": 0.11603530739132428,
+    "largest_asx_name": "WOODSIDE ENERGY GROUP LTD",
+    "largest_asx_code": "WDS",
+    "largest_three_share_pct": 81.49865578070612
+  },
+  {
+    "sector": "Consumer Staples",
+    "count": 8,
+    "count_share": 4.0,
+    "weight_share": 3.8617925631418433,
+    "gap_pp": -0.13820743685815673,
+    "median_weight_pct": 0.17270845008377556,
+    "largest_asx_name": "WOOLWORTHS GROUP LIMITED",
+    "largest_asx_code": "WOW",
+    "largest_three_share_pct": 84.82031416939316
+  },
+  {
+    "sector": "Communication",
+    "count": 10,
+    "count_share": 5.0,
+    "weight_share": 3.2019334590072375,
+    "gap_pp": -1.7980665409927625,
+    "median_weight_pct": 0.10691560626166066,
+    "largest_asx_name": "TELSTRA GROUP LIMITED",
+    "largest_asx_code": "TLS",
+    "largest_three_share_pct": 81.86139952975607
+  },
+  {
+    "sector": "Information Technology",
+    "count": 11,
+    "count_share": 5.5,
+    "weight_share": 2.053520594400056,
+    "gap_pp": -3.446479405599944,
+    "median_weight_pct": 0.14500767268770554,
+    "largest_asx_name": "XERO LIMITED",
+    "largest_asx_code": "XRO",
+    "largest_three_share_pct": 50.89392461367862
+  },
+  {
+    "sector": "Utilities",
+    "count": 3,
+    "count_share": 1.5,
+    "weight_share": 1.5369894871499168,
+    "gap_pp": 0.03698948714991679,
+    "median_weight_pct": 0.5592160912076736,
+    "largest_asx_name": "ORIGIN ENERGY LIMITED",
+    "largest_asx_code": "ORG",
+    "largest_three_share_pct": 100.0
+  }
+]

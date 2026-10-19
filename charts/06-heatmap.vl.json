@@ -1,0 +1,157 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 420,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "data": {
+    "url": "data/sector-bands.json"
+  },
+  "encoding": {
+    "x": {
+      "field": "band",
+      "type": "ordinal",
+      "sort": [
+        "<0.1%",
+        "0.1\u20130.5%",
+        "0.5\u20131%",
+        "\u22651%"
+      ],
+      "title": "Weight of each holding",
+      "axis": {
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "sector",
+      "type": "nominal",
+      "sort": [
+        "Financials",
+        "Materials",
+        "Health Care",
+        "Industrials",
+        "Consumer Discretionary",
+        "Real Estate",
+        "Energy",
+        "Consumer Staples",
+        "Communication",
+        "Information Technology",
+        "Utilities"
+      ],
+      "title": null,
+      "axis": {
+        "labelLimit": 200
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#faf9f4",
+        "strokeWidth": 3,
+        "cornerRadius": 4
+      },
+      "encoding": {
+        "color": {
+          "field": "count",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "tealblues"
+          },
+          "legend": {
+            "title": "Holdings",
+            "orient": "bottom"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "cell",
+            "value": 1
+          },
+          "value": 0.25
+        },
+        "tooltip": [
+          {
+            "field": "sector",
+            "type": "nominal"
+          },
+          {
+            "field": "band",
+            "type": "nominal"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Holdings"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "cell",
+          "select": {
+            "type": "point",
+            "fields": [
+              "sector"
+            ],
+            "on": "click",
+            "clear": "dblclick"
+          }
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 14
+      },
+      "encoding": {
+        "text": {
+          "field": "count",
+          "type": "quantitative"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.count > 19",
+            "value": "white"
+          },
+          "value": "#213b48"
+        }
+      }
+    }
+  ]
+}

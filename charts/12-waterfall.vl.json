@@ -1,0 +1,170 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "height": 365,
+  "data": {
+    "url": "data/resources-sector-waterfall.json"
+  },
+  "description": "Within the same RBA whole-exchange series, Resources share of market capitalisation fell from 52.9% in March 1980 to 19.5% in March 2019. Four interval changes reconcile those endpoints; they are percentage points, not returns or causal contributions.",
+  "usermeta": {
+    "idiom": "waterfall",
+    "source": "RBA RDP 2019-04 supplementary graph 11 data",
+    "population": "Whole-exchange modern series only; March quarter endpoints",
+    "units": "Totals: percent market-capitalisation share; intermediate bars: percentage-point changes",
+    "scope_change": "Replaces unrelated ABS mining-GVA waterfall, using an existing listed-market source"
+  },
+  "transform": [
+    {
+      "calculate": "min(datum.start, datum.end)",
+      "as": "lo"
+    },
+    {
+      "calculate": "max(datum.start, datum.end)",
+      "as": "hi"
+    },
+    {
+      "calculate": "datum.kind === 'Total' ? format(datum.end, '.1f')+'%' : format(datum.change, '+.1f')+' pp'",
+      "as": "label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "step",
+      "type": "ordinal",
+      "sort": [
+        "Mar 1980",
+        "1980–90",
+        "1990–00",
+        "2000–10",
+        "2010–19",
+        "Mar 2019"
+      ],
+      "title": null,
+      "axis": {
+        "labelAngle": 0
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "size": 52
+      },
+      "encoding": {
+        "y": {
+          "field": "lo",
+          "type": "quantitative",
+          "title": "Resources share of market value (%)",
+          "scale": {
+            "domain": [
+              0,
+              58
+            ]
+          }
+        },
+        "y2": {
+          "field": "hi"
+        },
+        "color": {
+          "field": "kind",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Total",
+              "Increase",
+              "Decrease"
+            ],
+            "range": [
+              "#254f67",
+              "#4c8078",
+              "#bf693b"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "from_date",
+            "type": "temporal",
+            "title": "From",
+            "format": "%b %Y"
+          },
+          {
+            "field": "to_date",
+            "type": "temporal",
+            "title": "To",
+            "format": "%b %Y"
+          },
+          {
+            "field": "kind",
+            "type": "nominal",
+            "title": "Bar meaning"
+          },
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Share or percentage-point change"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -10,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#213b48"
+      },
+      "encoding": {
+        "y": {
+          "field": "hi",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

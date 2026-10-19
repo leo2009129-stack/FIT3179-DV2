@@ -1,0 +1,93 @@
+[
+  {
+    "source_country": "New Zealand",
+    "natural_earth_admin": "New Zealand",
+    "iso_a3": "NZL",
+    "longitude": 172.787,
+    "latitude": -39.759
+  },
+  {
+    "source_country": "Canada",
+    "natural_earth_admin": "Canada",
+    "iso_a3": "CAN",
+    "longitude": -101.9107,
+    "latitude": 60.324287
+  },
+  {
+    "source_country": "United States Of America",
+    "natural_earth_admin": "United States of America",
+    "iso_a3": "USA",
+    "longitude": -97.482602,
+    "latitude": 39.538479
+  },
+  {
+    "source_country": "United Kingdom",
+    "natural_earth_admin": "United Kingdom",
+    "iso_a3": "GBR",
+    "longitude": -2.116346,
+    "latitude": 54.402739
+  },
+  {
+    "source_country": "Bermuda",
+    "natural_earth_admin": "Bermuda",
+    "iso_a3": "BMU",
+    "longitude": -64.763573,
+    "latitude": 32.296592
+  },
+  {
+    "source_country": "Singapore",
+    "natural_earth_admin": "Singapore",
+    "iso_a3": "SGP",
+    "longitude": 103.816925,
+    "latitude": 1.366587
+  },
+  {
+    "source_country": "Papua New Guinea",
+    "natural_earth_admin": "Papua New Guinea",
+    "iso_a3": "PNG",
+    "longitude": 143.910216,
+    "latitude": -5.695285
+  },
+  {
+    "source_country": "Guernsey",
+    "natural_earth_admin": "Guernsey",
+    "iso_a3": "GGY",
+    "longitude": -2.561736,
+    "latitude": 49.463533
+  },
+  {
+    "source_country": "Ireland",
+    "natural_earth_admin": "Ireland",
+    "iso_a3": "IRL",
+    "longitude": -7.798588,
+    "latitude": 53.078726
+  },
+  {
+    "source_country": "Jersey",
+    "natural_earth_admin": "Jersey",
+    "iso_a3": "JEY",
+    "longitude": -2.090146,
+    "latitude": 49.220808
+  },
+  {
+    "source_country": "Virgin Islands (British)",
+    "natural_earth_admin": "British Virgin Islands",
+    "iso_a3": "VGB",
+    "longitude": -64.63661,
+    "latitude": 18.426606
+  },
+  {
+    "source_country": "Israel",
+    "natural_earth_admin": "Israel",
+    "iso_a3": "ISR",
+    "longitude": 34.847915,
+    "latitude": 30.911148
+  },
+  {
+    "source_country": "Indonesia",
+    "natural_earth_admin": "Indonesia",
+    "iso_a3": "IDN",
+    "longitude": 101.892949,
+    "latitude": -0.954404
+  }
+]
