@@ -1,0 +1,70 @@
+{
+  "source_url": "https://www.asx.com.au/content/dam/asx/documents/listings/foreign-entity-data/2026/asx-foreign-entity-report-20260930.xlsx",
+  "report_date": "2026-09-30",
+  "worksheet": "Report Sheet",
+  "source_header_row": 24,
+  "source_data_rows": 136,
+  "unique_asx_codes": 136,
+  "unique_entity_names": 135,
+  "duplicate_codes": {},
+  "duplicate_entity_names": {
+    "NEWS CORPORATION..": 2
+  },
+  "exact_duplicate_records": 0,
+  "missing_values_by_field": {
+    "asx_code": 0,
+    "entity_name": 0,
+    "country_of_incorporation": 0,
+    "security_description": 0,
+    "listing_type": 0,
+    "securities_quoted_asx_millions": 0,
+    "securities_held_australia_millions": 0,
+    "report_date": 0,
+    "source_row": 0
+  },
+  "unmatched_countries": [],
+  "country_count": 13,
+  "listing_types": {
+    "ASX Foreign Exempt Listing": 52,
+    "ASX Listing": 84
+  },
+  "geography_semantics": "Country of incorporation; never headquarters, operating assets or mine locations",
+  "symbol_anchors": "Natural Earth 50m Admin-0 LABEL_X / LABEL_Y; geographic jurisdiction label anchors, not company coordinates",
+  "aggregation": "Count distinct entities by incorporation jurisdiction. NWS and NWSLV are two security classes of News Corporation and count as one entity; all other codes occur once with unique entity names.",
+  "multi_security_entity_evidence": {
+    "entity": "NEWS CORPORATION..",
+    "codes": [
+      "NWS",
+      "NWSLV"
+    ],
+    "source": "https://www.sec.gov/Archives/edgar/data/1564708/000156470826000175/nws-20260630.htm",
+    "source_sections": "Corporate Information and Item 5: Class A / Class B CDIs"
+  },
+  "source_notes": [
+    "New Entities",
+    "Includes foreign incorporated entities, including those with exclusive, primary and secondary listings on ASX. May include entities in which trading is suspended. ",
+    "Excludes:",
+    "- Foreign Securities that comprise part of a stapled security also comprising Australian Securities",
+    "- Options, derivatives, debt securities and securities other than those of the specified ASX code.",
+    "Foreign incorporated entities can apply for waivers or listing agreements where the total number of securities of ASX code that are quoted on ASX is less than their full issued capital.",
+    "This information should not be taken as being in any way indicative of the eligibility for, inclusion in, or likely treatment of the security in the S&P/ASX indices.",
+    "1. Represents the securities quoted from an ASX Compliance perspective as at the end of the month."
+  ],
+  "unique_entities": 135,
+  "entity_adjustment": 1,
+  "country_entity_counts": {
+    "United States Of America": 22,
+    "Singapore": 5,
+    "New Zealand": 53,
+    "United Kingdom": 8,
+    "Guernsey": 3,
+    "Jersey": 2,
+    "Indonesia": 1,
+    "Bermuda": 6,
+    "Canada": 23,
+    "Papua New Guinea": 5,
+    "Ireland": 3,
+    "Virgin Islands (British)": 2,
+    "Israel": 2
+  }
+}

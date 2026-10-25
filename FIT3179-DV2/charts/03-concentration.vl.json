@@ -1,0 +1,183 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 320,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "data": {
+    "url": "data/concentration.json"
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "rank": 0,
+            "cumulative": 0
+          },
+          {
+            "rank": 200,
+            "cumulative": 100
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#a7b0b3"
+      },
+      "encoding": {
+        "x": {
+          "field": "rank",
+          "type": "quantitative",
+          "title": "Holdings, largest first"
+        },
+        "y": {
+          "field": "cumulative",
+          "type": "quantitative",
+          "title": "Cumulative equity weight (%)",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "color": "#254f67"
+      },
+      "encoding": {
+        "x": {
+          "field": "rank",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "cumulative",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "rank",
+            "type": "quantitative",
+            "title": "Holdings"
+          },
+          {
+            "field": "cumulative",
+            "type": "quantitative",
+            "title": "Cumulative (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.rank === 10 || datum.rank === 20"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#bf693b",
+        "size": 80
+      },
+      "encoding": {
+        "x": {
+          "field": "rank",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "cumulative",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "rank",
+            "type": "quantitative"
+          },
+          {
+            "field": "cumulative",
+            "type": "quantitative",
+            "title": "Cumulative (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.rank === 10"
+        },
+        {
+          "calculate": "'Top 10: '+format(datum.cumulative,'.1f')+'%'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -10,
+        "color": "#bf693b",
+        "fontWeight": 600
+      },
+      "encoding": {
+        "x": {
+          "field": "rank",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "cumulative",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

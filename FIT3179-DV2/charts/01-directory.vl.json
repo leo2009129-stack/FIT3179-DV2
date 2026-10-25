@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 650,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "data": {
+    "url": "data/industry-counts.json"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "industry",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {
+            "labelLimit": 330,
+            "labelFontSize": 12
+          }
+        },
+        "x": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Listed directory entries"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.industry === 'Materials'",
+            "value": "#bf693b"
+          },
+          "value": "#254f67"
+        },
+        "tooltip": [
+          {
+            "field": "industry",
+            "type": "nominal"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Directory entries"
+          },
+          {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Share of directory",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 11,
+        "color": "#254f67"
+      },
+      "encoding": {
+        "y": {
+          "field": "industry",
+          "type": "nominal",
+          "sort": {
+            "field": "count",
+            "op": "sum",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "count",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "count",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "padding": {
+    "left": 5,
+    "right": 24,
+    "top": 5,
+    "bottom": 5
+  }
+}

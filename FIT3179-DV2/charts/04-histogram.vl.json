@@ -1,0 +1,400 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "height": 500,
+  "data": {
+    "url": "data/sector-count-vs-weight.json"
+  },
+  "description": "Same-population comparison: each sector’s share of the 200 IOZ stock holdings versus its share of the normalised equity portfolio. ASX names and membership are joined by exact ticker.",
+  "usermeta": {
+    "idiom": "dumbbell / connected dot plot (basic)",
+    "replacement": "Replaces the redundant holding-size histogram; legacy file ID retained for stable links",
+    "sources": [
+      "ASX directory, 21 October 2026",
+      "BlackRock IOZ holdings, 20 October 2026"
+    ],
+    "population": "Same 200 matched IOZ equity securities in both percentages",
+    "limitations": "Not full-ASX market capitalisation; ASX industry groups are not equated with IOZ sectors"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2,
+        "color": "#c7cfcd"
+      },
+      "encoding": {
+        "y": {
+          "field": "sector",
+          "type": "nominal",
+          "sort": [
+            "Financials",
+            "Materials",
+            "Health Care",
+            "Industrials",
+            "Consumer Discretionary",
+            "Real Estate",
+            "Energy",
+            "Consumer Staples",
+            "Communication",
+            "Information Technology",
+            "Utilities"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 200
+          }
+        },
+        "x": {
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              38
+            ]
+          },
+          "title": "Share of the same 200-stock portfolio (%)",
+          "field": "count_share"
+        },
+        "x2": {
+          "field": "weight_share"
+        },
+        "tooltip": [
+          {
+            "field": "sector",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Holdings out of 200"
+          },
+          {
+            "field": "count_share",
+            "type": "quantitative",
+            "title": "Share of holdings (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "weight_share",
+            "type": "quantitative",
+            "title": "Share of equity portfolio (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "gap_pp",
+            "type": "quantitative",
+            "title": "Weight minus count share (percentage points)",
+            "format": "+.1f"
+          },
+          {
+            "field": "largest_asx_name",
+            "type": "nominal",
+            "title": "Largest holding: ASX directory name"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "count_share",
+            "weight_share"
+          ],
+          "as": [
+            "key",
+            "value"
+          ]
+        },
+        {
+          "calculate": "datum.key === 'count_share' ? 'Share of holdings' : 'Share of portfolio'",
+          "as": "measure"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
+      "encoding": {
+        "y": {
+          "field": "sector",
+          "type": "nominal",
+          "sort": [
+            "Financials",
+            "Materials",
+            "Health Care",
+            "Industrials",
+            "Consumer Discretionary",
+            "Real Estate",
+            "Energy",
+            "Consumer Staples",
+            "Communication",
+            "Information Technology",
+            "Utilities"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 200
+          }
+        },
+        "x": {
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              38
+            ]
+          },
+          "title": "Share of the same 200-stock portfolio (%)",
+          "field": "value"
+        },
+        "color": {
+          "field": "measure",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Share of holdings",
+              "Share of portfolio"
+            ],
+            "range": [
+              "#7a8587",
+              "#254f67"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom",
+            "labelFontSize": 12,
+            "symbolSize": 100
+          }
+        },
+        "shape": {
+          "field": "measure",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Share of holdings",
+              "Share of portfolio"
+            ],
+            "range": [
+              "circle",
+              "diamond"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "sector",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Holdings out of 200"
+          },
+          {
+            "field": "count_share",
+            "type": "quantitative",
+            "title": "Share of holdings (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "weight_share",
+            "type": "quantitative",
+            "title": "Share of equity portfolio (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "gap_pp",
+            "type": "quantitative",
+            "title": "Weight minus count share (percentage points)",
+            "format": "+.1f"
+          },
+          {
+            "field": "largest_asx_name",
+            "type": "nominal",
+            "title": "Largest holding: ASX directory name"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "indexof(['Financials','Materials'], datum.sector) >= 0"
+        },
+        {
+          "fold": [
+            "count_share",
+            "weight_share"
+          ],
+          "as": [
+            "key",
+            "value"
+          ]
+        },
+        {
+          "calculate": "format(datum.value, '.1f') + '%'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "dy": {
+          "expr": "datum.key === 'count_share' ? -13 : 16"
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "sector",
+          "type": "nominal",
+          "sort": [
+            "Financials",
+            "Materials",
+            "Health Care",
+            "Industrials",
+            "Consumer Discretionary",
+            "Real Estate",
+            "Energy",
+            "Consumer Staples",
+            "Communication",
+            "Information Technology",
+            "Utilities"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 200
+          }
+        },
+        "x": {
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              38
+            ]
+          },
+          "title": "Share of the same 200-stock portfolio (%)",
+          "field": "value"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.key === 'count_share'",
+            "value": "#5b6c72"
+          },
+          "value": "#254f67"
+        }
+      }
+    },
+    {
+      "name": "count_weight_insight",
+      "transform": [
+        {
+          "filter": "datum.sector === 'Financials'"
+        },
+        {
+          "calculate": "(datum.count_share + datum.weight_share) / 2",
+          "as": "gap_middle"
+        },
+        {
+          "calculate": "datum.weight_share > datum.count_share * 2 ? 'Over twice its share of names' : 'Weight exceeds its share of names'",
+          "as": "insight"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "dy": -14,
+        "color": "#213b48"
+      },
+      "encoding": {
+        "y": {
+          "field": "sector",
+          "type": "nominal",
+          "sort": [
+            "Financials",
+            "Materials",
+            "Health Care",
+            "Industrials",
+            "Consumer Discretionary",
+            "Real Estate",
+            "Energy",
+            "Consumer Staples",
+            "Communication",
+            "Information Technology",
+            "Utilities"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 200
+          }
+        },
+        "x": {
+          "field": "gap_middle",
+          "type": "quantitative",
+          "title": "Share of the same 200-stock portfolio (%)",
+          "scale": {
+            "domain": [
+              0,
+              38
+            ]
+          }
+        },
+        "text": {
+          "condition": {
+            "test": "width >= 560",
+            "field": "insight"
+          },
+          "value": ""
+        },
+        "tooltip": null
+      }
+    }
+  ]
+}
