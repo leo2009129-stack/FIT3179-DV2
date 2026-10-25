@@ -1,0 +1,193 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "width": "container",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "height": 365,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -134,
+      0,
+      0
+    ]
+  },
+  "description": "Which Australian regional economies depend most on mining? Economic context only, not ASX company locations or market performance.",
+  "usermeta": {
+    "idiom": "choropleth map",
+    "population": "Eight Australian states and territories; all-economy industry accounts",
+    "period": "2024–25",
+    "measure": "Current-price Mining GVA / Total industry GVA × 100",
+    "source": "ABS State Accounts 2024–25, Tables 2–9; Natural Earth Admin-1 boundaries"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.state",
+          "from": {
+            "data": {
+              "url": "data/state-mining.json"
+            },
+            "key": "state",
+            "fields": [
+              "mining_share",
+              "mining_gva_m",
+              "total_gva_m"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.mining_gva_m / 1000",
+          "as": "mining_gva_bn"
+        },
+        {
+          "calculate": "datum.total_gva_m / 1000",
+          "as": "industry_gva_bn"
+        },
+        {
+          "calculate": "'2024–25 · current prices'",
+          "as": "period"
+        },
+        {
+          "calculate": "'All industries; listed and unlisted activity'",
+          "as": "scope"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fffefa",
+        "strokeWidth": 1.3
+      },
+      "encoding": {
+        "color": {
+          "field": "mining_share",
+          "type": "quantitative",
+          "title": "Mining / industry GVA (%)",
+          "scale": {
+            "domain": [
+              0,
+              45
+            ],
+            "scheme": "oranges"
+          },
+          "legend": {
+            "orient": "bottom",
+            "gradientLength": 210,
+            "values": [
+              0,
+              10,
+              20,
+              30,
+              40
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+          {
+            "field": "mining_share",
+            "type": "quantitative",
+            "title": "Mining share of industry GVA (%)",
+            "format": ".2f"
+          },
+          {
+            "field": "mining_gva_bn",
+            "type": "quantitative",
+            "title": "Mining GVA (A$bn)",
+            "format": ",.3f"
+          },
+          {
+            "field": "industry_gva_bn",
+            "type": "quantitative",
+            "title": "Total industry GVA (A$bn)",
+            "format": ",.3f"
+          },
+          {
+            "field": "period",
+            "type": "nominal",
+            "title": "Accounting period"
+          },
+          {
+            "field": "scope",
+            "type": "nominal",
+            "title": "Statistical scope"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/state-mining.json"
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#213b48"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

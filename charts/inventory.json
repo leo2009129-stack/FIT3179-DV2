@@ -1,0 +1,86 @@
+[
+  {
+    "id": "01-directory",
+    "title": "Which industries have the most listed names?",
+    "idiom": "bar",
+    "population": "All ASX directory entries \u00b7 2,051 entries \u00b7 21 Oct 2026",
+    "advanced": false
+  },
+  {
+    "id": "04-histogram",
+    "title": "More names, more weight? Compare the same 200 holdings.",
+    "idiom": "connected dot plot",
+    "population": "IOZ stock holdings \u00b7 same population and sector classification for both percentages",
+    "advanced": false
+  },
+  {
+    "id": "02-treemap",
+    "title": "Two names already account for more than a fifth",
+    "idiom": "nested treemap",
+    "population": "IOZ stock holdings \u00b7 200 positions \u00b7 20 Oct 2026",
+    "advanced": true
+  },
+  {
+    "id": "03-concentration",
+    "title": "Ten of 200 names carry almost half the weight",
+    "idiom": "cumulative concentration curve",
+    "population": "IOZ stock holdings \u00b7 holdings ranked largest to smallest",
+    "advanced": false
+  },
+  {
+    "id": "05-boxplot",
+    "title": "A typical holding tells a different story from a sector total",
+    "idiom": "boxplot",
+    "population": "IOZ stock holdings \u00b7 individual holding weights \u00b7 medians, spread and outliers",
+    "advanced": true
+  },
+  {
+    "id": "06-heatmap",
+    "title": "A crowded sector need not contain many large holdings",
+    "idiom": "heatmap",
+    "population": "IOZ stock holdings \u00b7 counts within four individual-weight bands",
+    "advanced": true
+  },
+  {
+    "id": "07-mekko",
+    "title": "Even a small sector can lean heavily on three names",
+    "idiom": "Marimekko",
+    "population": "IOZ stock holdings \u00b7 sector weight and concentration within each sector",
+    "advanced": true
+  },
+  {
+    "id": "08-history",
+    "title": "The listed market\u2019s industry balance has changed",
+    "idiom": "stacked area",
+    "population": "RBA market-value shares \u00b7 1917 Q1\u20132019 Q1 \u00b7 coverage changes in 1980",
+    "advanced": false
+  },
+  {
+    "id": "12-waterfall",
+    "title": "Resources lost share\u2014but the path included a rebound",
+    "idiom": "waterfall",
+    "population": "RBA whole-exchange series \u00b7 March 1980\u2013March 2019 \u00b7 percentage-point changes",
+    "advanced": true
+  },
+  {
+    "id": "09-choropleth",
+    "title": "Which regional economies depend most on mining?",
+    "idiom": "choropleth map",
+    "population": "Economic context \u00b7 eight states / territories \u00b7 2024\u201325 \u00b7 current-price GVA",
+    "advanced": true
+  },
+  {
+    "id": "10-symbols",
+    "title": "Where Are ASX-Listed Foreign Entities Incorporated?",
+    "idiom": "proportional-symbol map",
+    "population": "ASX Foreign Entity Report \u00b7 30 September 2026 \u00b7 135 entities / 136 security codes",
+    "advanced": true
+  },
+  {
+    "id": "11-bhp",
+    "title": "Where does one ASX-listed company operate?",
+    "idiom": "point-location map",
+    "population": "Point-location case study \u00b7 BHP Copper SA \u00b7 three mines \u00b7 GA 2025 / BHP July 2026",
+    "advanced": true
+  }
+]

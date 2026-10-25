@@ -1,0 +1,277 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 315,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "background": "transparent",
+    "font": "DM Sans",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "titleFontWeight": 500,
+      "gridColor": "#e8e6df",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 8,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#4b5c64",
+      "titleColor": "#4b5c64",
+      "symbolType": "square"
+    },
+    "title": {
+      "fontSize": 16,
+      "anchor": "start",
+      "color": "#213b48"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/mekko.json"
+      },
+      "mark": {
+        "type": "rect",
+        "stroke": "#fbfaf6",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "title": "Share of IOZ equity portfolio (%)"
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              1
+            ]
+          },
+          "title": "Within-sector share",
+          "axis": {
+            "format": ".0%"
+          }
+        },
+        "y2": {
+          "field": "y1"
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Largest 3 holdings",
+              "Remaining holdings"
+            ],
+            "range": [
+              "#254f67",
+              "#cddedc"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "title": null
+          }
+        },
+        "tooltip": [
+          {
+            "field": "sector",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "weight",
+            "type": "quantitative",
+            "title": "Sector equity weight (%)",
+            "format": ".2f"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Holdings in sector"
+          },
+          {
+            "field": "top3_share",
+            "type": "quantitative",
+            "title": "Largest 3 within sector (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/mekko.json"
+      },
+      "mark": {
+        "type": "text",
+        "angle": 270,
+        "color": "#fff",
+        "fontSize": 12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "x": {
+          "field": "label_x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "label_y",
+          "type": "quantitative"
+        },
+        "text": {
+          "condition": {
+            "test": "abs(scale('x', datum.x1) - scale('x', datum.x0)) >= 18 && abs(scale('y', datum.y1) - scale('y', datum.y0)) >= length(datum.sector) * 7 + 12",
+            "field": "sector",
+            "type": "nominal"
+          },
+          "value": ""
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.group === 'Largest 3 holdings'"
+        },
+        {
+          "calculate": "(datum.x0 + datum.x1) / 2",
+          "as": "label_x"
+        },
+        {
+          "calculate": "(datum.y0 + datum.y1) / 2",
+          "as": "label_y"
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/mekko.json"
+      },
+      "transform": [
+        {
+          "filter": "datum.sector === 'Energy' && datum.group === 'Largest 3 holdings'"
+        },
+        {
+          "calculate": "(datum.x0 + datum.x1) / 2",
+          "as": "energy_midpoint"
+        },
+        {
+          "calculate": "0.97",
+          "as": "annotation_top"
+        }
+      ],
+      "name": "energy_leader",
+      "mark": {
+        "type": "rule",
+        "color": "#4b5c64",
+        "strokeWidth": 1,
+        "tooltip": null
+      },
+      "encoding": {
+        "x": {
+          "field": "energy_midpoint",
+          "type": "quantitative",
+          "title": "Share of IOZ equity portfolio (%)"
+        },
+        "y": {
+          "field": "y1",
+          "type": "quantitative",
+          "title": "Within-sector share",
+          "axis": {
+            "format": ".0%"
+          }
+        },
+        "y2": {
+          "field": "annotation_top"
+        },
+        "opacity": {
+          "condition": {
+            "test": "width >= 700",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/mekko.json"
+      },
+      "transform": [
+        {
+          "filter": "datum.sector === 'Energy' && datum.group === 'Largest 3 holdings'"
+        },
+        {
+          "calculate": "(datum.x0 + datum.x1) / 2",
+          "as": "energy_midpoint"
+        },
+        {
+          "calculate": "datum.energy_midpoint - 2",
+          "as": "annotation_x"
+        },
+        {
+          "calculate": "'Energy: only '+format(datum.weight, '.1f')+'% of this portfolio\\nThree names hold '+format(datum.top3_share, '.1f')+'% of its sector weight'",
+          "as": "insight"
+        }
+      ],
+      "name": "energy_insight",
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "lineBreak": "\n",
+        "lineHeight": 15,
+        "color": "#213b48",
+        "tooltip": null
+      },
+      "encoding": {
+        "x": {
+          "field": "annotation_x",
+          "type": "quantitative",
+          "title": "Share of IOZ equity portfolio (%)"
+        },
+        "y": {
+          "datum": 0.99,
+          "type": "quantitative",
+          "title": "Within-sector share",
+          "axis": {
+            "format": ".0%"
+          }
+        },
+        "text": {
+          "condition": {
+            "test": "width >= 700",
+            "field": "insight",
+            "type": "nominal"
+          },
+          "value": ""
+        }
+      }
+    }
+  ]
+}

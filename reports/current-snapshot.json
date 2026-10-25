@@ -1,0 +1,87 @@
+{
+  "verification_date": "2026-10-21",
+  "freshness_scope": "Latest official ASX directory and IOZ holdings downloads available when retrieved; not a live feed.",
+  "date_semantics": "Source as-of dates are observed in the CSV headers; exact original publication times are not asserted.",
+  "sources": {
+    "asx": {
+      "url": "https://www.asx.com.au/asx/research/ASXListedCompanies.csv",
+      "as_of": "2026-10-21",
+      "source_header": "ASX listed companies as at Wed Oct 21 20:03:20 AEDT 2026",
+      "bytes": 105739,
+      "sha256": "65c72f27d89509e9a2d34c1520bbbc18d800ae644379e96928fb4fb71ef5d9c0",
+      "retrieved_utc": "2026-10-21T09:04:03.895665+00:00"
+    },
+    "ioz": {
+      "url": "https://www.blackrock.com/au/products/251852/ishares-core-s-p-asx-200-etf/1478358644060.ajax?fileType=csv&fileName=IOZ_holdings&dataType=fund",
+      "as_of": "2026-10-20",
+      "source_header": "Fund Holdings as of,\"20-Oct-2026\"",
+      "bytes": 33221,
+      "sha256": "948e7bc90dc3ed9a60752f86f358dd87bc23c0d7f1b9d72555fa10009bfacf22",
+      "retrieved_utc": "2026-10-21T09:04:03.447737+00:00"
+    }
+  },
+  "calculation": "Equity market value / sum of all 200 equity market values * 100; cash and futures excluded.",
+  "reported_weight_note": "The sum of published equity-row percentages is rounded source information, not the exact normalisation denominator.",
+  "checks": {
+    "directory_rows": 2051,
+    "directory_unique_codes": 2051,
+    "ioz_equity_rows": 200,
+    "ioz_unique_codes": 200,
+    "unmatched_ioz_codes": [],
+    "code_membership_changed": false,
+    "ioz_sector_assignments_changed": false,
+    "directory_content_changed": false,
+    "normalised_weight_sum": 100.0,
+    "non_equity_source_rows": 5
+  },
+  "metrics": {
+    "top2": 21.082935287562265,
+    "top10": 49.2149658057592,
+    "top20": 64.28939712979988,
+    "financials": {
+      "sector": "Financials",
+      "count": 29,
+      "count_share": 14.5,
+      "weight_share": 33.29182851793124,
+      "gap_pp": 18.791828517931243,
+      "median_weight_pct": 0.21874499402164954,
+      "largest_asx_name": "COMMONWEALTH BANK OF AUSTRALIA.",
+      "largest_asx_code": "CBA",
+      "largest_three_share_pct": 56.577028615446125
+    },
+    "materials": {
+      "sector": "Materials",
+      "count": 52,
+      "count_share": 26.0,
+      "weight_share": 25.14469169901018,
+      "gap_pp": -0.8553083009898188,
+      "median_weight_pct": 0.13927816154714825,
+      "largest_asx_name": "BHP GROUP LIMITED",
+      "largest_asx_code": "BHP",
+      "largest_three_share_pct": 58.854551748446696
+    },
+    "health_care": {
+      "sector": "Health Care",
+      "count": 13,
+      "count_share": 6.5,
+      "weight_share": 7.229478809914897,
+      "gap_pp": 0.7294788099148972,
+      "median_weight_pct": 0.34292637868344794,
+      "largest_asx_name": "CSL LIMITED",
+      "largest_asx_code": "CSL",
+      "largest_three_share_pct": 67.34083533865616
+    },
+    "energy": {
+      "sector": "Energy",
+      "count": 12,
+      "count_share": 6.0,
+      "weight_share": 4.767991403354618,
+      "gap_pp": -1.2320085966453824,
+      "median_weight_pct": 0.11664363421864514,
+      "largest_asx_name": "WOODSIDE ENERGY GROUP LTD",
+      "largest_asx_code": "WDS",
+      "largest_three_share_pct": 81.50675968386577
+    },
+    "reported_equity_weight_sum_pct": 99.78
+  }
+}
